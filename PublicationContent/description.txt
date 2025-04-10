@@ -1,9 +1,9 @@
 [img]https://img.shields.io/static/v1?logo=GitHub&labelColor=gray&color=blue&logoColor=white&label=&message=Open Source[/img] [img]https://img.shields.io/github/license/GenZmeY/KF2-TrueRandomBoss[/img] [img]https://img.shields.io/steam/favorites/3047331564[/img] [img]https://img.shields.io/steam/update-date/3047331564[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/3047331564][img]https://img.shields.io/github/v/tag/GenZmeY/KF2-TrueRandomBoss[/img][/url]
 
-[h1]Description[/h1]
+[h1]📋 Description[/h1]
 Server-side mutator that makes bosses truly random.
 
-[h1]What does it mean?[/h1]
+[h1]🤔 What does it mean?[/h1]
 Some players use the command to predict the boss. Here's the command:
 [code]getall kfgamereplicationinfo bossindex[/code]
 Copy this command, open the console (~), paste the command and press Enter.
@@ -19,51 +19,52 @@ This is possible because the boss is chosen at the beginning of the game.
 
 [b]This mutator sets a random boss index right before the start of the boss wave and thus makes the command above completely useless.[/b]
 
-[h1]Whitelisted?[/h1]
+[h1]❌ Whitelisted?[/h1]
 No. This mod is not whitelisted and will de-rank your server. Any XP gained will not be saved.
 
-[h1]Usage (single player)[/h1]
+[h1]🎮 Usage (single player)[/h1]
 [olist]
-[*]Subscribe to this mutator;
-[*]Start KF2;
-[*]Open console (~) and input:
-[b]open KF-BioticsLab?Mutator=TRB.Mut[/b]
-(replace the map and add the parameters you need)
-[*]<Enter>.
+[*]Subscribe to this mutator.
+[*]Create a file: [code]C:\Users\<username>\Documents\My Games\KillingFloor2\KFGame\Config\KFTRB.ini[/code]
+with content:
+[code][TRB.TRB]
+Version=0[/code]
+[*]Launch KF2, open the console, and start the game:
+[code]open KF-BioticsLab?Game=KFGameContent.KFGameInfo_Endless?Difficulty=3?GameLength=2?Mutator=TRB.Mut[/code]
+(replace the map and set/add parameters you need).
 [/olist]
 
-[h1]Usage (server)[/h1]
-[b]Note:[/b] [i]If you don't understand what is written here, read the article [url=https://wiki.killingfloor2.com/index.php?title=Dedicated_Server_(Killing_Floor_2)][u]Dedicated Server (KF2 wiki)[/u][/url] before following these instructions.[/i]
+[h1]🖥️ Usage (server)[/h1]
+[b]Note:[/b] [i]If this is unclear, first read: [url=https://wiki.killingfloor2.com/index.php?title=Dedicated_Server_(Killing_Floor_2)][u]Dedicated Server Guide (KF2 wiki)[/u][/url][/i]
 [olist]
-[*]Open your [b]PCServer-KFEngine.ini[/b] / [b]LinuxServer-KFEngine.ini[/b];
-[*]Find the [b][IpDrv.TcpNetDriver][/b] section and make sure that there is a line (add if not):
-[b]DownloadManagers=OnlineSubsystemSteamworks.SteamWorkshopDownload[/b]
-❗️ If there are several [b]DownloadManagers=[/b] then the line above should be the first ❗️
+[*]Open [b]PCServer-KFEngine.ini[/b] / [b]LinuxServer-KFEngine.ini[/b].
+[*]Find [b][IpDrv.TcpNetDriver][/b] section and ensure line exists (add if missing):
+[code]DownloadManagers=OnlineSubsystemSteamworks.SteamWorkshopDownload[/code]
+(If there are several [b]DownloadManagers[/b] then the line above should be the first)
 [*]Add the following string to the [b][OnlineSubsystemSteamworks.KFWorkshopSteamworks][/b] section (create one if it doesn't exist):
-[b]ServerSubscribedWorkshopItems=3047331564[/b]
-[*]Start the server and wait while the mutator is downloading;
-[*]Add mutator to server start parameters: [b]?Mutator=TRB.Mut[/b] and restart the server.
+[code]ServerSubscribedWorkshopItems=3047331564[/code]
+[*]Start server and wait for mutator download.
+[*]When the download is complete, stop the server.
+[*]Create a file: [code]<kf2-server>\KFGame\Config\KFTRB.ini[/code]
+with content:
+[code][TRB.TRB]
+Version=0[/code]
+[*]Add mutator to server start parameters: [code]?Mutator=TRB.Mut[/code] and start the server.
 [/olist]
 
-[h1]Important setup information[/h1]
-The config should be created on first start, but now the game contains a bug that initializes the config values ​​randomly if they are not explicitly set. Thus, the config may have incorrect values ​​or not be created at all.
-So if you are using this mutator for the first time, I highly recommend doing the following:
-[olist]
-[*]Create (modify) [b]KFTRB.ini[/b] manually. Put the following content there:
-[b][TRB.TRB]
-Version=0[/b]
-[*]Start the game/server with TRB to generate the contents of the config.
-[*]Close the game/server.
-[/olist]
-[b]Right now this is the only way to correctly create the default config.[/b]
-Unfortunately I can't do anything about it because it's a game problem (not mutator). I hope TWI fixes this someday.
+[h1]📌 Notes[/h1]
+[list]
+[*]Even if you use this mod, the boss prediction command can sometimes give correct predictions, just by chance. And that's okay. After all, this is a real random 🙃
+[/list]
 
-[h1]Setup (KFTRB.ini)[/h1]
-Honestly, you don't need to edit anything in the config, [b]just make sure you create the default config correctly[/b].
-The config exists because I needed it during development ¯\_(ツ)_/¯
+[h1]🌍 Credits[/h1]
+[list]
+[*]The cat on the cover is Meawbin (original character by [url=https://x.com/horrormove]Cotton Valent[/url]).
+[/list]
 
-[h1]Notes[/h1]
-📌 Even if you use this mod, the boss prediction command can sometimes give correct predictions, just by chance. And that's okay. After all, this is a real random :)
+[h1]☑️ Status: Completed[/h1]
+✔️ The mutator works with the current version of the game (v1150) and I have implemented everything I planned.
+⛔️ Development has stopped: I no longer have the time or motivation to maintain this mod. No further updates or bug fixes are planned.
 
-[h1]Sources[/h1]
-[url=https://github.com/GenZmeY/KF2-TrueRandomBoss]https://github.com/GenZmeY/KF2-TrueRandomBoss[/url] (GNU GPLv3)
+[h1]📜 Sources[/h1]
+https://github.com/GenZmeY/KF2-TrueRandomBoss [b](GNU GPLv3)[/b]
